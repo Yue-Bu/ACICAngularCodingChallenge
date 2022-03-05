@@ -24,7 +24,6 @@ export class PopularLinesOfBusinessComponent implements OnInit {
     this.getRecentQuotes();
   }
 
-  // TODO: Refactor
   get popularLinesOfBusiness(): LineOfBusiness[] {
     let quoteCounts = countBy(
       this.recentQuotes,
@@ -33,7 +32,6 @@ export class PopularLinesOfBusinessComponent implements OnInit {
     let pairs = toPairs(quoteCounts);
     let quoteOrder = orderBy(pairs, (pair) => pair[1], "desc");
     let topTwo = take(quoteOrder, 2);
-    // console.log(topTwo);
     let topTwoLinesOfBusiness = topTwo.map(
       (pair) =>
         this.linesOfBusiness.find((l) => l.id.toString() == pair[0]) ??
@@ -41,7 +39,7 @@ export class PopularLinesOfBusinessComponent implements OnInit {
           id: 0,
           name: 'Not Found',
           description: 'Not Found',
-        } as LineOfBusiness) // TODO: Log error?
+        } as LineOfBusiness)
     );
     return topTwoLinesOfBusiness;
   }
