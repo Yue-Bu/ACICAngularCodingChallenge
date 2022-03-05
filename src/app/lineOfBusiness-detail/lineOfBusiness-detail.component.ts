@@ -20,11 +20,12 @@ export class LineOfBusinessDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getLineOfBusiness();
+    this.route.params.subscribe(params => {
+      this.getLineOfBusiness(params.id);
+    });
   }
 
-  getLineOfBusiness(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  getLineOfBusiness(id: number): void {
     this.lineOfBusinessService.getLineOfBusiness(id)
       .subscribe(lineOfBusiness => this.lineOfBusiness = lineOfBusiness);
   }

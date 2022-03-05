@@ -33,7 +33,7 @@ export class PopularLinesOfBusinessComponent implements OnInit {
     let pairs = toPairs(quoteCounts);
     let quoteOrder = orderBy(pairs, (pair) => pair[1], "desc");
     let topTwo = take(quoteOrder, 2);
-    console.log(topTwo);
+    // console.log(topTwo);
     let topTwoLinesOfBusiness = topTwo.map(
       (pair) =>
         this.linesOfBusiness.find((l) => l.id.toString() == pair[0]) ??
